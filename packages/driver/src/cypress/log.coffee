@@ -270,7 +270,9 @@ Log = (state, config, obj) ->
         at: null
         next: null
 
+      console.time("$snapshot")
       {body, htmlAttrs, headStyles, bodyStyles} = cy.createSnapshot(@get("$el"))
+      console.timeEnd("$snapshot")
 
       obj = {
         name: name
