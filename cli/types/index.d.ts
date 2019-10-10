@@ -64,6 +64,7 @@ declare namespace Cypress {
     path: string
     isHeaded: boolean
     isHeadless: boolean
+    family: string
   }
 
   interface LocalStorage {
@@ -4442,3 +4443,69 @@ Cypress._ // => Lodash _
 ```
  */
 declare const Cypress: Cypress.Cypress
+
+declare namespace Mocha {
+  interface TestFunction {
+        /**
+         * Describe a specification or test-case with the given `title` and callback `fn` acting
+         * as a thunk.
+         *
+         * - _Only available when invoked via the mocha CLI._
+         */
+        (title: string, config: Partial<Cypress.ConfigOptions>, fn?: Func): Test;
+
+        /**
+         * Describe a specification or test-case with the given `title` and callback `fn` acting
+         * as a thunk.
+         *
+         * - _Only available when invoked via the mocha CLI._
+         */
+        (title: string, config: Partial<Cypress.ConfigOptions>, fn?: AsyncFunc): Test;
+
+  }
+  interface ExclusiveTestFunction {
+        /**
+         * Describe a specification or test-case with the given `title` and callback `fn` acting
+         * as a thunk.
+         *
+         * - _Only available when invoked via the mocha CLI._
+         */
+        (title: string, config: Partial<Cypress.ConfigOptions>, fn?: Func): Test;
+
+        /**
+         * Describe a specification or test-case with the given `title` and callback `fn` acting
+         * as a thunk.
+         *
+         * - _Only available when invoked via the mocha CLI._
+         */
+        (title: string, config: Partial<Cypress.ConfigOptions>, fn?: AsyncFunc): Test;
+  }
+  interface PendingTestFunction {
+        /**
+         * Describe a specification or test-case with the given `title` and callback `fn` acting
+         * as a thunk.
+         *
+         * - _Only available when invoked via the mocha CLI._
+         */
+        (title: string, config: Partial<Cypress.ConfigOptions>, fn?: Func): Test;
+
+        /**
+         * Describe a specification or test-case with the given `title` and callback `fn` acting
+         * as a thunk.
+         *
+         * - _Only available when invoked via the mocha CLI._
+         */
+        (title: string, config: Partial<Cypress.ConfigOptions>, fn?: AsyncFunc): Test;
+  }
+
+  interface SuiteFunction {
+    /**
+     * [bdd, tdd] Describe a "suite" with the given `title` and callback `fn` containing
+     * nested suites.
+     *
+     * - _Only available when invoked via the mocha CLI._
+     */
+    (title: string, config: Partial<Cypress.ConfigOptions>, fn: (this: Suite) => void): Suite;
+  }
+
+}
