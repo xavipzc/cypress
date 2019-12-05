@@ -10,7 +10,13 @@
     "cypress:open": "TZ=America/New_York node ../../scripts/cypress open --project .",
     "cypress:run": "TZ=America/New_York node ../../scripts/cypress run --project .",
     "postinstall": "echo '@packages/desktop-gui needs: yarn build'",
-    "watch": "yarn build -- --watch --progress"
+    "test-e2e": "cross-env TEST_ENV=development yarn watch",
+    "test-e2e:ci": "cross-env TEST_ENV=ci yarn watch",
+    "test-integration": "exit 0",
+    "test-integration:ci": "exit 0",
+    "test-unit": "exit 0",
+    "test-unit:ci": "exit 0",
+    "watch": "yarn build --watch --progress"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.7.0",
@@ -18,9 +24,11 @@
     "@cypress/json-schemas": "5.33.0",
     "@cypress/react-tooltip": "0.5.3",
     "@packages/web-config": "*",
+    "@packages/webpack-plugin-post-compile": "*",
     "bluebird": "3.5.3",
     "bootstrap-sass": "3.4.1",
     "classnames": "2.2.6",
+    "concurrently": "^5.0.0",
     "cross-env": "5.2.1",
     "fira": "cypress-io/fira#fb63362742eea8cdce0d90825ab9264d77719e3d",
     "font-awesome": "4.7.0",
@@ -39,6 +47,7 @@
     "react-dom": "16.8.6",
     "react-inspector": "^4.0.0",
     "react-loader": "2.4.5",
+    "shelljs": "0.8.3",
     "webpack": "4.35.3",
     "webpack-cli": "3.3.2"
   },
