@@ -95,6 +95,10 @@ onServer = (app) ->
 
     return res.type('html').end()
 
+  app.get "/setSpecialChars", (req, res) ->
+    res.setHeader("set-cookie", "AWSALB=0GzYs2kzoyI4H5bZBHOUQHEtlZzm2DdrV2TXptF0/BHF3tpdtTFhqTTfCv7aBCb+Vid4UN1W2JN1chRqekIi605s2KqWERTn6OxJerAZQti79gd0DAqCBuft2Qez; Expires=Sun, 22 Dec 2019 21:03:30 GMT; Path=/")
+    res.type('html').end()
+
 haveRoot = !process.env.USE_HIGH_PORTS && process.geteuid() == 0
 
 if not haveRoot

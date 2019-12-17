@@ -172,6 +172,9 @@ describe "cookies", ->
       'request'
     ].forEach (cmd) ->
       context "in a cy.#{cmd}", ->
+        it "can load a set-cookie with some special chars", ->
+          cy[cmd]("/setSpecialChars")
+
         ## https://github.com/cypress-io/cypress/issues/5894
         it "can successfully send cookies as a Cookie header", ->
           cy[cmd]({
